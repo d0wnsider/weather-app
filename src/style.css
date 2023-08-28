@@ -3,3 +3,24 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+body {
+  overflow: hidden;
+  margin: 100px;
+}
+
+main {
+  padding: 50px;
+  height: 80vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loc {
+  font-weight: bold;
+  font-size: 100px;
+}
