@@ -9,6 +9,11 @@ body {
   margin: 100px;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+}
+
 main {
   padding: 50px;
   height: 80vh;
