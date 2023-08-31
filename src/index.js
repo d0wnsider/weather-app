@@ -21,14 +21,14 @@ fetch(
   })
   .then(function (data) {
     console.log(data);
-    loc.textContent = data.location.name;
-    if (data.location.is_day === 0) locDay.textContent = 'Day';
-    else locDay.textContent = 'Night';
-    locTime.textContent = data.location.localtime;
-    tempC.textContent = data.current.temp_c;
-    tempF.textContent = data.current.temp_f;
-    locCondition.textContent = data.current.condition.text;
-    humidity.textContent = data.current.humidity;
+    loc.textContent = `[ ${data.location.name} ]`;
+    if (data.current.is_day === 1) locDay.textContent = `Day time ]`;
+    else locDay.textContent = `Night time ]`;
+    locTime.textContent = `${data.location.localtime} ]`;
+    tempC.textContent = `${data.current.temp_c} °C ]`;
+    tempF.textContent = `${data.current.temp_f} °F ]`;
+    locCondition.textContent = `${data.current.condition.text} skies ]`;
+    humidity.textContent = `Humidity ${data.current.humidity}% ]`;
   })
   .catch((error) => console.error('Error:', error));
 
@@ -44,15 +44,14 @@ function formSubmit(e) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-      loc.textContent = data.location.name;
-      if (data.location.is_day === 0) locDay.textContent = 'Day';
-      else locDay.textContent = 'Night';
-      locTime.textContent = data.location.localtime;
-      tempC.textContent = data.current.temp_c;
-      tempF.textContent = data.current.temp_f;
-      locCondition.textContent = data.current.condition.text;
-      humidity.textContent = data.current.humidity;
+      loc.textContent = `[ ${data.location.name} ]`;
+      if (data.current.is_day === 1) locDay.textContent = `Day time ]`;
+      else locDay.textContent = `Night time ]`;
+      locTime.textContent = `${data.location.localtime} ]`;
+      tempC.textContent = `${data.current.temp_c} °C ]`;
+      tempF.textContent = `${data.current.temp_f} °F ]`;
+      locCondition.textContent = `${data.current.condition.text} skies ]`;
+      humidity.textContent = `Humidity ${data.current.humidity}% ]`;
     })
     .catch((error) => console.error('Error:', error));
 }
