@@ -16,12 +16,23 @@ body {
   margin: 100px;
   background: url('./images/53083388532_0e00d2f3da_k.jpg') center no-repeat
     fixed;
+  user-select: none;
 }
 
 .app {
   font-weight: light;
   font-size: 25px;
   color: var(--white);
+}
+
+#search-bar {
+  width: 20px;
+  height: auto;
+}
+
+#form-city {
+  display: flex;
+  align-items: center;
 }
 
 header {
