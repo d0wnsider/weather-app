@@ -45,13 +45,13 @@ function formSubmit(e) {
     })
     .then(function (data) {
       loc.textContent = `「 ${data.location.name} 」`;
-      if (data.current.is_day === 1) locDay.textContent = `Day time 」`;
-      else locDay.textContent = `Night time 」`;
-      locTime.textContent = `${data.location.localtime} 」`;
-      tempC.textContent = `${data.current.temp_c} °C 」`;
-      tempF.textContent = `${data.current.temp_f} °F 」`;
-      locCondition.textContent = `${data.current.condition.text} skies 」`;
-      humidity.textContent = `Humidity ${data.current.humidity}% 」`;
+      if (data.current.is_day === 1) locDay.textContent = `Day time`;
+      else locDay.textContent = `Night time`;
+      locTime.textContent = `${data.location.localtime}`;
+      tempC.textContent = `${data.current.temp_c} °C`;
+      tempF.textContent = `${data.current.temp_f} °F`;
+      locCondition.textContent = `${data.current.condition.text} skies`;
+      humidity.textContent = `Humidity ${data.current.humidity}%`;
     })
     .catch((error) => console.error('Error:', error));
 }
