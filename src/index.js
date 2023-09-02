@@ -11,7 +11,7 @@ const search = document.querySelector('#search');
 const form = document.querySelector('#form-city');
 
 fetch(
-  `https://api.weatherapi.com/v1/current.json?key=346db19fc2d3410b90233359231708&q=$new york&aqi=no`,
+  `http://api.weatherapi.com/v1/forecast.json?key=346db19fc2d3410b90233359231708&q=New York&days=3&aqi=no&alerts=no`,
   {
     mode: 'cors',
   }
