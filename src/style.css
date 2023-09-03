@@ -55,6 +55,7 @@ main {
 
 .span-font {
   font-size: 19px;
+  color: var(--white);
 }
 
 .loc {

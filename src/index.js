@@ -77,7 +77,6 @@ function convertCelsiusToFahrenheit(e) {
 }
 
 function updateTime() {
-  // const currentTimeElement = document.querySelector('locTime');
   let currentTime = new Date();
   currentTime = currentTime.toLocaleTimeString();
   locTime.textContent = currentTime;
