@@ -25,7 +25,7 @@ fetch(
     loc.textContent = `「 ${data.location.name} 」`;
     if (data.current.is_day === 1) locDay.textContent = `Day time`;
     else locDay.textContent = `Night time`;
-    locTime.textContent = `${data.location.localtime}`;
+    locTime.textContent = `${locTime}`;
     temp.textContent = Math.round(`${data.current.temp_f}`);
     corf.textContent = '°F';
     locCondition.textContent = `${data.current.condition.text} skies`;
@@ -48,7 +48,6 @@ function formSubmit(e) {
       loc.textContent = `「 ${data.location.name} 」`;
       if (data.current.is_day === 1) locDay.textContent = `Day time`;
       else locDay.textContent = `Night time`;
-      locTime.textContent = `${data.location.localtime}`;
       temp.textContent = Math.round(`${data.current.temp_f}`);
       locCondition.textContent = `${data.current.condition.text} skies`;
       humidity.textContent = `Humidity ${data.current.humidity}%`;
@@ -77,5 +76,14 @@ function convertCelsiusToFahrenheit(e) {
   }
 }
 
+function updateTime() {
+  // const currentTimeElement = document.querySelector('locTime');
+  let currentTime = new Date();
+  currentTime = currentTime.toLocaleTimeString();
+  locTime.textContent = currentTime;
+}
+
+setInterval(updateTime, 1000);
+updateTime();
 form.addEventListener('submit', formSubmit);
 tempText.addEventListener('click', convertCelsiusToFahrenheit);
