@@ -61,3 +61,46 @@ main {
   font-weight: bold;
   font-size: 100px;
 }
+
+/* button */
+.temp-text {
+  background-color: transparent;
+  border: 1px solid #266db6;
+  box-sizing: border-box;
+  color: #00132c;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 16px 23px;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.temp-text:hover,
+.temp-text:active {
+  outline: 0;
+}
+
+.temp-text:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.temp-text:before {
+  background-color: #d5edf6;
+  content: '';
+  height: calc(100% + 3px);
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  transition: background-color 300ms ease-in;
+  width: 100%;
+  z-index: -1;
+}
+
+.temp-text:hover:before {
+  background-color: #6dcff6;
+}

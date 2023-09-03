@@ -2,13 +2,13 @@
 /* eslint-disable func-names */
 const loc = document.querySelector('.loc');
 const locTime = document.querySelector('.locTime');
-const tempC = document.querySelector('.tempC');
-const tempF = document.querySelector('.tempF');
+const temp = document.querySelector('.temp');
 const locCondition = document.querySelector('.locCondition');
 const locDay = document.querySelector('.locDay');
 const humidity = document.querySelector('.humidity');
 const search = document.querySelector('#search');
 const form = document.querySelector('#form-city');
+const tempText = document.querySelector('.temp-text');
 
 fetch(
   `http://api.weatherapi.com/v1/forecast.json?key=346db19fc2d3410b90233359231708&q=New York&days=3&aqi=no&alerts=no`,
@@ -25,8 +25,7 @@ fetch(
     if (data.current.is_day === 1) locDay.textContent = `Day time`;
     else locDay.textContent = `Night time`;
     locTime.textContent = `${data.location.localtime}`;
-    tempC.textContent = `${data.current.temp_c} °C`;
-    tempF.textContent = `${data.current.temp_f} °F`;
+    temp.textContent = Math.round(`${data.current.temp_f}`);
     locCondition.textContent = `${data.current.condition.text} skies`;
     humidity.textContent = `Humidity ${data.current.humidity}%`;
   })
@@ -35,7 +34,7 @@ fetch(
 function formSubmit(e) {
   e.preventDefault();
   fetch(
-    `https://api.weatherapi.com/v1/current.json?key=346db19fc2d3410b90233359231708&q=${search.value}&aqi=no`,
+    `https://api.weatherapi.com/v1/current.json?key=346db19fc2d3410b90233359231708&q=${search.value}&days=3&aqi=no&alerts=no`,
     {
       mode: 'cors',
     }
@@ -48,12 +47,30 @@ function formSubmit(e) {
       if (data.current.is_day === 1) locDay.textContent = `Day time`;
       else locDay.textContent = `Night time`;
       locTime.textContent = `${data.location.localtime}`;
-      tempC.textContent = `${data.current.temp_c} °C`;
-      tempF.textContent = `${data.current.temp_f} °F`;
+      temp.textContent = Math.round(`${data.current.temp_f}`);
       locCondition.textContent = `${data.current.condition.text} skies`;
       humidity.textContent = `Humidity ${data.current.humidity}%`;
+      // button text and value reset
+      tempText.textContent = '°C';
+      tempText.value = '0';
     })
     .catch((error) => console.error('Error:', error));
 }
 
+function convertCelsiusToFahrenheit(e) {
+  e.preventDefault();
+  if (tempText.value === '0') {
+    tempText.value = '1';
+    tempText.textContent = '°F';
+    const result = Math.round((5 / 9) * (temp.textContent - 32));
+    temp.textContent = result;
+  } else {
+    tempText.value = '0';
+    tempText.textContent = '°C';
+    const result = Math.round((9 / 5) * temp.textContent + 32);
+    temp.textContent = result;
+  }
+}
+
 form.addEventListener('submit', formSubmit);
+tempText.addEventListener('click', convertCelsiusToFahrenheit);
