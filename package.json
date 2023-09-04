@@ -1,5 +1,5 @@
 {
-  "name": "webpack-template-eslint-prettier",
+  "name": "weather-app",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -9,7 +9,7 @@
     "build": "webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "d0wnsider",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.46.0",
