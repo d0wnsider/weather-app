@@ -1,5 +1,7 @@
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable func-names */
+import './style.css';
+
 const loc = document.querySelector('.loc');
 const locTime = document.querySelector('.locTime');
 const temp = document.querySelector('.temp');
