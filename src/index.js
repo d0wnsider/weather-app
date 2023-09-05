@@ -14,7 +14,7 @@ const tempText = document.querySelector('.temp-text');
 const corf = document.querySelector('.celorfar');
 
 fetch(
-  `http://api.weatherapi.com/v1/forecast.json?key=346db19fc2d3410b90233359231708&q=New York&days=3&aqi=no&alerts=no`,
+  `https://api.weatherapi.com/v1/forecast.json?key=346db19fc2d3410b90233359231708&q=New York&days=3&aqi=no&alerts=no`,
   {
     mode: 'cors',
   }
