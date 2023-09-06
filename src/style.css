@@ -16,6 +16,7 @@ body {
   margin: 100px;
   background: url('./images/53083388532_0e00d2f3da_k.jpg') center no-repeat
     fixed;
+  background-size: cover;
   user-select: none;
 }
 
@@ -25,7 +26,7 @@ body {
   color: var(--white);
 }
 
-#search-bar {
+.search-bar {
   width: 20px;
   height: auto;
 }

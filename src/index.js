@@ -1,6 +1,7 @@
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable func-names */
 import './style.css';
+import searchLogo from './images/search.png';
 
 const loc = document.querySelector('.loc');
 const locTime = document.querySelector('.locTime');
@@ -12,6 +13,11 @@ const search = document.querySelector('#search');
 const form = document.querySelector('#form-city');
 const tempText = document.querySelector('.temp-text');
 const corf = document.querySelector('.celorfar');
+
+const myIcon = new Image();
+myIcon.src = searchLogo;
+myIcon.classList.add('search-bar');
+form.insertBefore(myIcon, search);
 
 fetch(
   `https://api.weatherapi.com/v1/forecast.json?key=346db19fc2d3410b90233359231708&q=New York&days=3&aqi=no&alerts=no`,

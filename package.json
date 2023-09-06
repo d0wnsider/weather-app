@@ -12,6 +12,7 @@
   "author": "d0wnsider",
   "license": "ISC",
   "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.46.0",
     "eslint-config-airbnb-base": "^15.0.0",
