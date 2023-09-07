@@ -10,4 +10,5 @@
 * JavaScript
 * Webpack
 
+<p>Thanks to Loki https://www.flickr.com/photos/195466348@N02/53083388532/</p>
 <p><a href="https://www.theodinproject.com/lessons/node-path-javascript-weather-app">The Odin Project</a></p>
