@@ -19,52 +19,27 @@ myIcon.src = searchLogo;
 myIcon.classList.add('search-bar');
 form.insertBefore(myIcon, search);
 
-fetch(
-  `https://api.weatherapi.com/v1/forecast.json?key=346db19fc2d3410b90233359231708&q=New York&days=3&aqi=no&alerts=no`,
-  {
-    mode: 'cors',
-  }
-)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-    loc.textContent = `「 ${data.location.name} 」`;
-    if (data.current.is_day === 1) locDay.textContent = `Day time`;
-    else locDay.textContent = `Night time`;
-    locTime.textContent = `${locTime}`;
-    temp.textContent = Math.round(`${data.current.temp_f}`);
-    corf.textContent = '°F';
-    locCondition.textContent = `${data.current.condition.text} skies`;
-    humidity.textContent = `Humidity ${data.current.humidity}%`;
-  })
-  .catch((error) => console.error('Error:', error));
-
-function formSubmit(e) {
-  e.preventDefault();
-  fetch(
-    `https://api.weatherapi.com/v1/current.json?key=346db19fc2d3410b90233359231708&q=${search.value}&days=3&aqi=no&alerts=no`,
+async function getWeatherAPI1(city = 'New York') {
+  const response = await fetch(
+    `https://api.weatherapi.com/v1/forecast.json?key=346db19fc2d3410b90233359231708&q=${city}&days=3&aqi=no&alerts=no`,
     {
       mode: 'cors',
     }
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      loc.textContent = `「 ${data.location.name} 」`;
-      if (data.current.is_day === 1) locDay.textContent = `Day time`;
-      else locDay.textContent = `Night time`;
-      temp.textContent = Math.round(`${data.current.temp_f}`);
-      locCondition.textContent = `${data.current.condition.text} skies`;
-      humidity.textContent = `Humidity ${data.current.humidity}%`;
-      // button text and value reset
-      tempText.textContent = '°C';
-      tempText.value = '0';
-      corf.textContent = '°F';
-    })
-    .catch((error) => console.error('Error:', error));
+  );
+  const data = await response.json();
+  loc.textContent = `「 ${data.location.name} 」`;
+  if (data.current.is_day === 1) locDay.textContent = `Day time`;
+  else locDay.textContent = `Night time`;
+  locTime.textContent = `${locTime}`;
+  temp.textContent = Math.round(`${data.current.temp_f}`);
+  corf.textContent = '°F';
+  locCondition.textContent = `${data.current.condition.text} skies`;
+  humidity.textContent = `Humidity ${data.current.humidity}%`;
+}
+
+function formSubmit(e) {
+  e.preventDefault();
+  getWeatherAPI1(search.value);
 }
 
 function convertCelsiusToFahrenheit(e) {
@@ -94,3 +69,4 @@ setInterval(updateTime, 1000);
 updateTime();
 form.addEventListener('submit', formSubmit);
 tempText.addEventListener('click', convertCelsiusToFahrenheit);
+getWeatherAPI1();
